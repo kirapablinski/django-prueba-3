@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    {% if enfrentamientos %}
+    <table class="table table-striped table-inverse table-responsive">
+        <thead class="thead-inverse">
+            <tr>
+                <th>ID</th>
+                <th>Sayayin</th>
+                <th>Enemigo</th>
+                <th>Ubicación</th>
+                <th>Saga</th>
+                <th>Resultado</th>
+                <th>-</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for enfrentamiento in enfrentamientos %}
+            <tr>
+                <td>{{ enfrentamiento.id }}</td>
+                <td>{{ enfrentamiento.sayayin.nombre }}</td>
+                <td>{{ enfrentamiento.enemigo.nombre }}</td>
+                <td>{{ enfrentamiento.ubicacion }}</td>
+                <td>{{ enfrentamiento.saga }}</td>
+                <td>{{ enfrentamiento.resultado }}</td>
+                <td><a href="/eliminarEnfrentamiento/{{ enfrentamiento.id }}" class="btn btn-danger btn-sm">Eliminar</a></td>
+                <td><a href="/actualizarEnfrentamiento/{{ enfrentamiento.id }}" class="btn btn-success btn-sm">Actualizar</a></td>
+            </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+    {% else %}
+    <div class="alert alert-primary" role="alert">
+        <strong>No se encontraron enfrentamientos en la base de datos.</strong>
+    </div>
+    {% endif %}
+
+    <a href="../" class="btn btn-danger">Volver</a>
+</body>
+</html>

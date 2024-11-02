@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+    {% if sayayines %}
+    <table class="table table-striped table-inverse table-responsive">
+        <thead class="thead-inverse">
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Nivel de Poder</th>
+                <th>Veces que ha Resucitado</th>
+                <th>Torneos Ganados</th>
+                <th>Edad</th>
+                <th>Maestro</th>
+                <th>Transformación Máxima</th>
+                <th>Descripción Breve</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sayayin in sayayines %}
+            <tr>
+                <td>{{ sayayin.id }}</td>
+                <td>{{ sayayin.nombre }}</td>
+                <td>{{ sayayin.nivel_de_poder }}</td>
+                <td>{{ sayayin.veces_ha_resucitado }}</td>
+                <td>{{ sayayin.torneos_ganados }}</td>
+                <td>{{ sayayin.edad }}</td>
+                <td>{{ sayayin.maestro }}</td>
+                <td>{{ sayayin.transformacion_max }}</td>
+                <td>{{ sayayin.descripcion_breve }}</td>
+                <td><a href="/eliminarSayayin/{{ sayayin.id }}" class="btn btn-danger btn-sm">Eliminar</a></td>
+                <td><a href="/actualizarSayayin/{{ sayayin.id }}" class="btn btn-success btn-sm">Actualizar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <div class="alert alert-primary" role="alert">
+        <strong>No se encontraron sayayines en la base de datos.</strong>
+    </div>
+    {% endif %}
+    <a href="../" class="btn btn-danger">Volver</a>
+</body>
+</html>
