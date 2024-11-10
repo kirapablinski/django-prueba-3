@@ -8,6 +8,7 @@ class Enemigo(models.Model):
     raza = models.CharField(max_length=50)
     organizacion = models.CharField(max_length=50)
     planetas_destruidos = models.IntegerField(default=0)
+
     def __str__(self):
         return self.nombre
     
