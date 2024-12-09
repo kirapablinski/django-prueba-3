@@ -1,7 +1,9 @@
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from enemigosapp.views import *
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -18,4 +20,6 @@ urlpatterns = [
     path('agregarEnfrentamiento/', agregarEnfrentamiento),
     path('actualizarEnfrentamiento/<int:id>', actualizarEnfrentamiento),
     path('eliminarEnfrentamiento/<int:id>', eliminarEnfrentamiento),
+    path('api/', include('api.urls')),
+    
 ]
